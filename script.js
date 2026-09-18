@@ -1,3 +1,17 @@
+/* ---------- Structure de données ---------- */
+/**
+ * Un cours est représenté par un objet :
+ * {
+ *   id: number,
+ *   title: string,
+ *   lang: "fr" | "en" | "mg",
+ *   technology: string,
+ *   level: "beginner" | "intermediate" | "advanced",
+ *   price: number,       // en Ariary (Ar)
+ *   description: string
+ * }
+ * La liste de cours est simplement un tableau de ces objets.
+ */
 const courses = [
   {
     id: 1,
@@ -51,13 +65,13 @@ const courses = [
   },
   {
     id: 6,
-    title: "React avanzato",
-    lang: "it",
+    title: "Advanced React",
+    lang: "en",
     technology: "react",
     level: "advanced",
     price: 300000,
     description:
-      "Approfondisci hook personalizzati, gestione dello stato globale, performance e pattern architetturali avanzati in React.",
+      "Dive into custom hooks, global state management, performance optimization and advanced architectural patterns in React.",
   },
   {
     id: 7,
@@ -91,13 +105,13 @@ const courses = [
   },
   {
     id: 10,
-    title: "Introduzione a PHP",
-    lang: "it",
+    title: "Introduction to PHP",
+    lang: "en",
     technology: "php",
     level: "beginner",
     price: 130000,
     description:
-      "Impara le basi di PHP: variabili, funzioni, form, sessioni e connessione a un database MySQL.",
+      "Learn the basics of PHP: variables, functions, forms, sessions and connecting to a MySQL database.",
   },
   {
     id: 11,
@@ -141,13 +155,13 @@ const courses = [
   },
   {
     id: 15,
-    title: "Sicurezza informatica di base",
-    lang: "it",
+    title: "Cybersecurity Fundamentals",
+    lang: "en",
     technology: "security",
     level: "intermediate",
     price: 200000,
     description:
-      "Principi fondamentali della sicurezza informatica: autenticazione, crittografia, OWASP Top 10 e buone pratiche.",
+      "Core principles of cybersecurity: authentication, encryption, the OWASP Top 10 and best practices.",
   },
   {
     id: 16,
@@ -201,6 +215,7 @@ const courses = [
   },
 ];
 
+/* ---------- Références DOM ---------- */
 const langFlagsEl = document.getElementById("langFlags");
 const techSelect = document.getElementById("techSelect");
 const levelSelect = document.getElementById("levelSelect");
@@ -212,6 +227,7 @@ const coursesGrid = document.getElementById("coursesGrid");
 const resultCount = document.getElementById("resultCount");
 const noResultsEl = document.getElementById("noResults");
 
+/* ---------- État des filtres ---------- */
 const state = {
   lang: "all",
   technology: "all",
@@ -220,6 +236,7 @@ const state = {
   keyword: "",
 };
 
+/* ---------- Initialisation ---------- */
 function populateTechOptions() {
   const techs = [...new Set(courses.map((c) => c.technology))].sort();
   techs.forEach((tech) => {
@@ -234,6 +251,7 @@ function formatPrice(value) {
   return value.toLocaleString("fr-FR").replace(/,/g, " ") + " Ar";
 }
 
+/* ---------- Rendu d'une carte de cours ---------- */
 function createCourseCard(course) {
   const card = document.createElement("article");
   card.className = "course-card";
@@ -257,6 +275,7 @@ function createCourseCard(course) {
   return card;
 }
 
+/* ---------- Filtrage ---------- */
 function courseMatchesFilters(course) {
   if (state.lang !== "all" && course.lang !== state.lang) return false;
   if (state.technology !== "all" && course.technology !== state.technology)
@@ -291,6 +310,7 @@ function render() {
   coursesGrid.hidden = filtered.length === 0;
 }
 
+/* ---------- Écouteurs d'événements ---------- */
 langFlagsEl.addEventListener("click", (e) => {
   const btn = e.target.closest(".flag-btn");
   if (!btn) return;
@@ -344,5 +364,6 @@ clearAllBtn.addEventListener("click", () => {
   render();
 });
 
+/* ---------- Démarrage ---------- */
 populateTechOptions();
 render();
