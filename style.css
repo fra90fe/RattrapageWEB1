@@ -1,0 +1,264 @@
+:root {
+  --red: #d32f2f;
+  --red-dark: #b71c1c;
+  --green: #2e7d32;
+  --bg-filters: #f2efe9;
+  --border: #e0ddd6;
+  --text-dark: #2b2b2b;
+  --text-muted: #8a8a8a;
+  --radius: 4px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: #fff;
+  color: var(--text-dark);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.filters {
+  background: var(--bg-filters);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-label {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.lang-flags {
+  display: flex;
+  gap: 6px;
+}
+
+.flag-btn {
+  font-size: 18px;
+  line-height: 1;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 4px 6px;
+  cursor: pointer;
+}
+
+.flag-btn.active {
+  border-color: var(--red);
+  box-shadow: 0 0 0 1px var(--red) inset;
+}
+
+select,
+input[type="text"] {
+  font-size: 13px;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--text-dark);
+  min-width: 150px;
+}
+
+.search-group input {
+  min-width: 200px;
+}
+
+.price-group {
+  min-width: 180px;
+}
+
+#priceValue {
+  color: var(--red);
+  text-transform: none;
+  font-size: 11px;
+}
+
+input[type="range"] {
+  accent-color: var(--red);
+  width: 100%;
+}
+
+.clear-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 8px 4px;
+}
+
+.clear-btn:hover {
+  color: var(--red);
+}
+
+.result-count {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 18px 4px 12px;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.course-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.course-thumb {
+  position: relative;
+  height: 140px;
+  background: linear-gradient(160deg, #0d1b2a 0%, #1b263b 60%, #415a77 100%);
+}
+
+.course-lang-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 10px;
+  padding: 3px 7px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.course-level-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: var(--green);
+  color: #fff;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  text-transform: capitalize;
+}
+
+.course-body {
+  padding: 12px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.course-title {
+  color: var(--red);
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.course-price {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.course-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.course-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.course-actions button {
+  flex: 1;
+  font-size: 12px;
+  padding: 8px 0;
+  border-radius: var(--radius);
+  cursor: pointer;
+  border: 1px solid var(--red);
+  background: #fff;
+  color: var(--red);
+}
+
+.course-actions .add-cart {
+  background: var(--red);
+  color: #fff;
+}
+
+.course-actions .add-cart:hover {
+  background: var(--red-dark);
+}
+
+.no-results {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px 0;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 992px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .clear-btn {
+    margin-left: 0;
+    align-self: flex-end;
+  }
+
+  select,
+  input[type="text"] {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+}
