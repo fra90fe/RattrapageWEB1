@@ -1,17 +1,3 @@
-/* ---------- Structure de données ---------- */
-/**
- * Un cours est représenté par un objet :
- * {
- *   id: number,
- *   title: string,
- *   lang: "fr" | "en" | "mg",
- *   technology: string,
- *   level: "beginner" | "intermediate" | "advanced",
- *   price: number,       // en Ariary (Ar)
- *   description: string
- * }
- * La liste de cours est simplement un tableau de ces objets.
- */
 const courses = [
   {
     id: 1,
@@ -215,7 +201,6 @@ const courses = [
   },
 ];
 
-/* ---------- Références DOM ---------- */
 const langFlagsEl = document.getElementById("langFlags");
 const techSelect = document.getElementById("techSelect");
 const levelSelect = document.getElementById("levelSelect");
@@ -227,7 +212,6 @@ const coursesGrid = document.getElementById("coursesGrid");
 const resultCount = document.getElementById("resultCount");
 const noResultsEl = document.getElementById("noResults");
 
-/* ---------- État des filtres ---------- */
 const state = {
   lang: "all",
   technology: "all",
@@ -236,7 +220,6 @@ const state = {
   keyword: "",
 };
 
-/* ---------- Initialisation ---------- */
 function populateTechOptions() {
   const techs = [...new Set(courses.map((c) => c.technology))].sort();
   techs.forEach((tech) => {
@@ -251,7 +234,6 @@ function formatPrice(value) {
   return value.toLocaleString("fr-FR").replace(/,/g, " ") + " Ar";
 }
 
-/* ---------- Rendu d'une carte de cours ---------- */
 function createCourseCard(course) {
   const card = document.createElement("article");
   card.className = "course-card";
@@ -275,7 +257,6 @@ function createCourseCard(course) {
   return card;
 }
 
-/* ---------- Filtrage ---------- */
 function courseMatchesFilters(course) {
   if (state.lang !== "all" && course.lang !== state.lang) return false;
   if (state.technology !== "all" && course.technology !== state.technology)
@@ -310,7 +291,6 @@ function render() {
   coursesGrid.hidden = filtered.length === 0;
 }
 
-/* ---------- Écouteurs d'événements ---------- */
 langFlagsEl.addEventListener("click", (e) => {
   const btn = e.target.closest(".flag-btn");
   if (!btn) return;
@@ -364,6 +344,5 @@ clearAllBtn.addEventListener("click", () => {
   render();
 });
 
-/* ---------- Démarrage ---------- */
 populateTechOptions();
 render();
