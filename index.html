@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catalogue de cours</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Barre de filtres -->
+      <section class="filters">
+        <div class="filter-group">
+          <label class="filter-label">Langue</label>
+          <div class="lang-flags" id="langFlags">
+            <button
+              type="button"
+              class="flag-btn active"
+              data-lang="all"
+              title="Toutes les langues"
+            >
+              🌐
+            </button>
+            <button
+              type="button"
+              class="flag-btn"
+              data-lang="fr"
+              title="Français"
+            >
+              🇫🇷
+            </button>
+            <button
+              type="button"
+              class="flag-btn"
+              data-lang="it"
+              title="Italien"
+            >
+              🇮🇹
+            </button>
+            <button
+              type="button"
+              class="flag-btn"
+              data-lang="mg"
+              title="Malagasy"
+            >
+              🇲🇬
+            </button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label" for="techSelect">Technologie</label>
+          <select id="techSelect">
+            <option value="all">Toutes les technologies</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label" for="levelSelect">Niveau</label>
+          <select id="levelSelect">
+            <option value="all">Tous les niveaux</option>
+            <option value="beginner">Débutant</option>
+            <option value="intermediate">Intermédiaire</option>
+            <option value="advanced">Avancé</option>
+          </select>
+        </div>
+
+        <div class="filter-group price-group">
+          <label class="filter-label">
+            Prix <span id="priceValue">0 Ar - 300 000 Ar</span>
+          </label>
+          <input
+            type="range"
+            id="priceRange"
+            min="0"
+            max="300000"
+            step="5000"
+            value="300000"
+          />
+        </div>
+
+        <div class="filter-group search-group">
+          <label class="filter-label" for="searchInput">Recherche</label>
+          <input type="text" id="searchInput" placeholder="Mots-clés..." />
+        </div>
+
+        <button type="button" id="clearAll" class="clear-btn">
+          Tout effacer
+        </button>
+      </section>
+
+      <p class="result-count" id="resultCount">0 cours trouvés</p>
+
+      <!-- Grille de cours -->
+      <section class="courses-grid" id="coursesGrid"></section>
+
+      <p class="no-results" id="noResults" hidden>
+        Aucun cours ne correspond à votre recherche.
+      </p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
